@@ -232,8 +232,8 @@ module API
                  setter: -> (value, *) { represented.description = value['raw'] },
                  render_nil: true
         property :priority, getter: -> (*) { priority.try(:name) }, render_nil: true
-        property :start_date, getter: -> (*) { start_date.to_datetime.utc.iso8601 unless start_date.nil? }, render_nil: true
-        property :due_date, getter: -> (*) { due_date.to_datetime.utc.iso8601 unless due_date.nil? }, render_nil: true
+        property :start_date, getter: -> (*) { start_date.to_date.iso8601 unless start_date.nil? }, render_nil: true
+        property :due_date, getter: -> (*) { due_date.to_date.iso8601 unless due_date.nil? }, render_nil: true
         property :estimated_time,
                  getter: -> (*) do
                    Duration.new(hours_and_minutes(represented.estimated_hours)).iso8601
